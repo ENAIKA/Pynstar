@@ -22,7 +22,6 @@
 ### Specifications
 | Behaviour                | Input example           | Output Example                   |
 | ---------------------------|:-----------------------:| --------------------------------:|
-
 |click     | click links| True/user redirected to approriate template|
 | search              |input e.g animal| True/only images with name animal display|
 | click              |click image| True/redirected to page to view a bigger image and display image details |
