@@ -1,0 +1,55 @@
+{%extends 'all-pics/base.html'%}
+{%block content%}
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+
+      {% if user.is_authenticated %}
+      <form action="/updateprofile/{{user.id}}/"  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        
+        {{ user_form.username.label_tag}}
+        {{ user_form.username }}<br>
+        {{ user_form.first_name.label_tag}}
+        {{ user_form.first_name }}<br>
+        {{ user_form.last_name.label_tag}}
+        {{ user_form.last_name }}<hr>
+        
+        {{ profile_form.as_p }}
+        <button type="submit">Save changes</button>
+      </form>
+      {%endif%}
+    </div>
+    <div class="vl"></div>
+    <div class="col-md-6">
+      <div class="row">
+        
+          
+          {%if user.profile.profilephoto%}
+          <img src="{{user.profile.profilephoto.url}}" style="width:35%;padding-left: 2em;  "class="rounded-circle img-responsive" >
+          {%endif%}
+         
+          
+        </div>
+
+        <div class="col-sm-6">
+         Userame: {{user.username}}<br>
+         Fistname: {{user.first_name}}<br>
+         Lastname: {{user.last_name}}<br>
+         Bio: {{user.userprofile.bio}}<br>
+           
+         Following: <span class="text-info">{{user.followers.count}}</span></br>
+
+         Followers:   <span class="text-info">{{user.following.count}}</span><br>
+         <strong><em><span class="text-primary">{{user.profile.email}}</span></em></strong>
+          
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
