@@ -1,0 +1,37 @@
+{%extends 'all-pics/base.html'%}
+{%block content%}
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+
+      {% if user.is_authenticated %}
+         
+      Username: {{user.username}}<br>
+      Email:<strong> <em>{{user.email}}</em></strong>
+
+      <br><br>
+      <a class="btn btn-lg btn-info" href="/updateprofile/{{user.id}}">Update Profile</a>
+    </div>
+    <div class="vl"></div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-sm-6">
+          Following: {{user.followers.count}}<br>
+
+          Followers: {{user.following.count}}<br>
+          Bio: {{user.userprofile.bio}}
+        </div>
+        <div class="col-sm-6">
+          <img src="{{user.profilephoto.url}}" class="img-responsive">
+          {% if user.userprofile.profilephoto%}
+          <img src="{{user.userprofile.profilephoto.url}}" class="img-responsive"><br><br>
+    
+              {%endif%}
+        </div>
+      </div>
+    </div>
+    {%endif%}
+  </div>
+</div>
+{%endblock%}
