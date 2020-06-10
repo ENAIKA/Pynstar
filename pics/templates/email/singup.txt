@@ -1,0 +1,5 @@
+Hello {{username}}
+
+Welcome to Pynstar, share your photos.
+
+Your paswword is {{paswword}}
