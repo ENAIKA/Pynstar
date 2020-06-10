@@ -1,0 +1,38 @@
+{%extends 'all-pics/base.html'%}
+
+{%block content%}
+<br>
+<div class="container" style="background-image: url('/static/img/background.jpg');">
+    <div class="row" style="color:white;">
+        {% if photos %}
+        <h2 class="">Found {{ photos|length }} photos of searched term {{message}}</h2>
+        {% else %}
+        <h2> Found 0 photos for the search term {{message}}</h2>
+        {% endif %}
+
+    </div>
+
+    <div class="row d-flex">
+
+        {% if photos %}
+        
+        <div class="d-flex flex-row">
+            {% for photo in photos %}
+            <div class="d-flex flex-column" style="padding-left: 2%;">
+                
+            
+            <div class="card">
+                {{photo.name}}
+                <img src="{{photo.image.url}}" class="thumbnail"><br>
+              <em><Caption>{{photo.caption}}</Caption> </em> 
+               <p><span class="text-danger"> {{photo.like.count}}</span>  <span class="text-danger"><i class="fa fa-heart"></i></span></p>
+            </div>
+        </div> 
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+
+{%endblock%}
