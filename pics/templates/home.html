@@ -1,0 +1,24 @@
+{%extends 'all-pics/base.html'%}
+{% block content %}
+<br>
+<div class="container" style="background-image: url('/static/img/background.jpg');">
+    <div class="row">
+        <div class="col-md-6">
+            {% if user.is_authenticated %}
+            <span style="font-family: 'Pacifico', cursive;">welcome to Pynstar <span
+                    class="text-info">{{user.username}}</span></span>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-md btn-info" href='/photos'>Posts</a>
+        </div>
+    </div><br><br>
+    <div class="row">
+        {%else%}
+        <h1>You are not logged in</h1>
+        <a href="/login">Login</a>
+        {%endif%}
+
+
+    </div>
+</div>
+{% endblock %}
