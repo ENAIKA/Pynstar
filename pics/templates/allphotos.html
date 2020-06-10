@@ -1,0 +1,35 @@
+{%extends 'all-pics/base.html'%}
+{% load bootstrap4 %}
+<!-- Some content here-->
+
+{%block content%}
+<br>
+<div class="container">
+    <div class="row d-flex">
+
+        {% if photos %}
+        
+        <div class="d-flex flex-row">
+            {% for photo in photos %}
+            <div class="d-flex flex-column" style="padding-left: 2%;">
+                
+            
+            <div class="card">
+                {{photo.name}}
+                <a href="/photo/{{photo.id}}"><img src="{{photo.image.url}}" class="thumbnail"></a><br>
+              <em><Caption>{{photo.caption}}</Caption> </em> 
+               <p><span class="text-danger"> {{photo.like.count}}</span>  <span class="text-danger"><i class="fa fa-heart"></i></span></p>
+              
+            </div>
+        </div> 
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+   
+    
+
+
+   
+</div>
+{%endblock%}
