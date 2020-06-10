@@ -1,0 +1,28 @@
+{%extends 'all-pics/base.html'%}
+{%block content%}
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+
+            {% if user.is_authenticated %}
+            <form action="/uploadphoto/{{user.id}}/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+
+                {{ form.name.label_tag}}
+                {{ form.name }}<br>
+                {{ form.caption.label_tag}}
+                {{form.caption }}<br>
+                {{form.image.label_tag}}
+                {{form.image }}
+                <hr>
+
+
+                <button type="submit">Post</button>
+            </form>
+            {%endif%}
+        </div>
+    </div>
+</div>
+{%endblock%}
